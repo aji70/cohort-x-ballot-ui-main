@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getProposalsContract } from "../constants/contracts";
 import { readOnlyProvider } from "../constants/providers";
 import { decodeBytes32String } from "ethers";
+import { toast } from "react-toastify";
 
 const useProposals = () => {
   const [proposals, setProposal] = useState({
@@ -25,7 +26,7 @@ const useProposals = () => {
         });
       })
       .catch((err) => {
-        console.error("error fetching proposals: ", err);
+        toast.error("error fetching proposals: ", err);
         setProposal((prev) => ({ ...prev, loading: false }));
       });
   }, []);

@@ -14,7 +14,7 @@ const useHandleVote = () => {
   const { walletProvider } = useWeb3ModalProvider();
   return useCallback(
     async (id) => {
-      if (!isSupportedChain(chainId)) return console.error("Wrong network");
+      if (!isSupportedChain(chainId)) return toast.error("Wrong network");
       const readWriteProvider = getProvider(walletProvider);
       const signer = await readWriteProvider.getSigner();
 
